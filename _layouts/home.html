@@ -1,0 +1,45 @@
+---
+layout: default
+---
+
+<section id="hello">
+  <h1 class="center">Hello!</h1>
+  <h2 class="center">i'm {{ site.author }}</h2>
+  <p class="center">python programmer, game developer, hacker</p>
+</section>
+
+<section id="profile" class="clearfix center">
+  <h2 class="center">Profile</h2>
+  <article>
+    <img src="{{ site.profile_image }}" alt="profile photo">
+    <span>
+      <p>게임과 코딩을 좋아하는 개발자입니다.</p>
+      <p>디자인 일도 좋아하지만 취미로 하고 있습니다.</p>
+      <p>파이썬은 최근에 배웠지만 마음에 드는 언어입니다.</p>
+      <p>언젠가는 정말 멋진 것을 만들고 싶습니다.</p>
+    </span>
+  </article>
+</section>
+
+<section id="projects" class="center">
+  <h2>Projects</h2>
+  {% for category in site.categories %}
+  {% capture category_name %}{{ category | first }}{% endcapture %}
+  <h3>{{ category_name }}</h3>
+  {% for post in site.categories[category_name] %}
+  <article>
+    <img src="{{ post.image }}" alt="">
+    <h4>{{ post.title }}</h4>
+    <h5>{{ post.date | date: "%Y-%m-%d" }}</h5>
+    <p>{{ post.description }}</p>
+    <a href="{{ post.github }}">Github Repo</a>
+  </article>
+  {% endfor %}
+  {% endfor %}
+</section>
+
+<section id="contact" class="center">
+  <h2>Contact</h2>
+  <p>저와 함께 일하고 싶거나 좋은 제안이 있으시면 언제라도 이메일 보내주세요.</p>
+  <A href="mailto:{{ site.email }}">{{ site.email }}</a>
+</section>
