@@ -2,44 +2,53 @@
 layout: default
 ---
 
-<section id="hello">
-  <h1 class="center">Hello!</h1>
-  <h2 class="center">i'm {{ site.author }}</h2>
-  <p class="center">python programmer, game developer, hacker</p>
+<section id="hello" class="text-center m-5">
+  <h1 class="font-weight-bold">Hello!</h1>
+  <h3 class="font-weight-normal">i'm {{ site.author }}</h3>
+  <p class="font-weight-light">python programmer, game developer, hacker</p>
 </section>
 
-<section id="profile" class="clearfix center">
-  <h2 class="center">Profile</h2>
-  <article>
-    <img src="{{ site.profile_image }}" alt="profile photo">
-    <span>
-      <p>게임과 코딩을 좋아하는 개발자입니다.</p>
-      <p>디자인 일도 좋아하지만 취미로 하고 있습니다.</p>
-      <p>파이썬은 최근에 배웠지만 마음에 드는 언어입니다.</p>
-      <p>언젠가는 정말 멋진 것을 만들고 싶습니다.</p>
-    </span>
-  </article>
+<section id="profile" class="mx-auto card m-5 bg-dark text-white" style="max-width: 540px;">
+  <div class="row no-gutters">
+    <div class="col-md-4 d-flex flex-wrap align-items-center">
+      <img src="{{ site.profile_image }}" class="card-img" alt="profile photo">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h3 class="card-title font-weight-bold">안녕하세요!</h3>
+        <p class="card-text">게임과 코딩을 좋아하는 개발자입니다.</p>
+        <p class="card-text">최근에는 파이썬을 활용해서 게임과 웹사이트를 만들었습니다.</p>
+        <p class="card-text">언젠가 더 멋진 것들을 만들고 싶습니다.</p>
+      </div>
+    </div>
+  </div>
 </section>
 
-<section id="projects" class="center">
+
+<section id="projects" class="text-center">
   <h2>Projects</h2>
   {% for category in site.categories %}
   {% capture category_name %}{{ category | first }}{% endcapture %}
   <h3>{{ category_name }}</h3>
-  {% for post in site.categories[category_name] %}
-  <article>
-    <img src="{{ post.image }}" alt="">
-    <h4>{{ post.title }}</h4>
-    <h5>{{ post.date | date: "%Y-%m-%d" }}</h5>
-    <p>{{ post.description }}</p>
-    <a href="{{ post.github }}">Github Repo</a>
-  </article>
-  {% endfor %}
+  <section class="card-deck justify-content-center">
+    {% for post in site.categories[category_name] %}
+    <section class="card m-3 text-white bg-dark" style="max-width: 15rem;">
+      <img class="card-img-top" src="{{ post.image }}" alt="project image">
+      <section class="card-body">
+        <h5 class="card-title">{{ post.title }}</h5>
+        <p class="card-text">{{ post.description }}</p>
+        <p class="card-text"><small class="text-muted">{{ post.date | date: "%Y-%m-%d" }}</small></p>
+        <a href="{{ post.github }}" class="btn btn-primary">Github</a>
+      </section>
+    </section>
+    {% endfor %}
+  </section>
   {% endfor %}
 </section>
 
-<section id="contact" class="center">
-  <h2>Contact</h2>
+
+<section id="contact" class="text-center m-5">
+  <h5 class="card-title">Contact</h5>
   <p>저와 함께 일하고 싶거나 좋은 제안이 있으시면 언제라도 이메일 보내주세요.</p>
-  <A href="mailto:{{ site.email }}">{{ site.email }}</a>
+  <a href="mailto:{{ site.email }}" class="btn btn-primary">{{ site.email }}</a>
 </section>
