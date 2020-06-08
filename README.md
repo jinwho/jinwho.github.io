@@ -1,3 +1,3 @@
 # jinwho.github.io
 
-Github Page Made using jekyll with bootstrap4
+simple Profile Github Page using jekyll with bootstrap4
